@@ -1,0 +1,17 @@
+import { initTRPC } from "@trpc/server";
+
+  const ideas = [
+    { name: 'Idea 1', description: 'Description 1', nick: 'cool-idea-nick-1' },
+    { name: 'Idea 2', description: 'Description 2', nick: 'cool-idea-nick-2' },
+    { name: 'Idea 3', description: 'Description 3', nick: 'cool-idea-nick-3' },
+  ]
+
+const trpc = initTRPC.create()
+
+export const trpcRouter = trpc.router({
+    getIdeas: trpc.procedure.query(() => {
+        return ideas
+    })
+})
+
+export type TrpcRouter = typeof trpcRouter
